@@ -129,7 +129,7 @@ public class CaseStudy {
 
         /*
         * Police will count 10 seconds with a delay of 1000 ms between each count
-        * If the hackers havent cracked the password by them - game over
+        * If the hackers havent cracked the password by then - game over
         * */
         @Override
         public void run()
