@@ -44,12 +44,22 @@ public class ComplexCalculation {
     public BigInteger calculateResult(BigInteger base1, BigInteger power1,
                                       BigInteger base2, BigInteger power2) {
 
+        /* Give each thread a base and power operand */
         PowerCalculatingThread t1 = new PowerCalculatingThread(base1, power1);
         PowerCalculatingThread t2 = new PowerCalculatingThread(base2, power2);
 
+        /*
+        Each thread will calculate the exponential
+        This is the speed up
+        Instead of waiting for 1 to finish then doing 2
+        Give both of them, do them at the same time
+        */
         t1.start();
         t2.start();
 
+        /*
+        * Here we basically say they must finish before we continue
+        * */
         try {
             t1.join();
             t2.join();
@@ -57,6 +67,9 @@ public class ComplexCalculation {
             // handle
         }
 
+        /*
+        * Only return once both threads are complete
+        * */
         return t1.getResult().add(t2.getResult());
     }
 
