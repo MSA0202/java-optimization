@@ -1,5 +1,12 @@
 package org.example.section6;
 
+/*
+!!!! Sync happens only at an OBJECT level !!!!
+ * Note only 1 inventoryCounter object is created and used by both threads
+ * thus, it is shared.
+ *
+ * IF there were 2 inventory objects, we would not experience thread locking
+ * */
 public class ExploringThreadProblemsWithSynchronizationLocks {
 
     public static void etpExecute() throws InterruptedException {
@@ -60,14 +67,14 @@ public class ExploringThreadProblemsWithSynchronizationLocks {
      * Using an explicit lock object allows us to control synchronization
      * more precisely than synchronizing entire methods.
      *
-     * In this structure, all access to the shared variable `items`
+     * In this structure, all access to the SHARED variable `items`
      * is protected by the same lock (lock1). This guarantees thread safety
      * by ensuring that only one thread at a time can:
      *   - increment items
      *   - decrement items
      *   - read items
      *
-     * This means:
+     * This means: (locking does not apply to none shared objects)
      * - Thread A and Thread B CANNOT execute increment() and decrement()
      *   at the same time.
      * - All operations on `items` are serialized through lock1.

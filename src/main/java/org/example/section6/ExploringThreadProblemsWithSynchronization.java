@@ -1,5 +1,12 @@
 package org.example.section6;
 
+/*
+Sync happens only at an OBJECT level !
+ * Note only 1 inventoryCounter object is created and used by both threads
+ * thus, it is shared.
+ *
+ * IF there were 2 inventory objects, we would not experience thread locking
+ * */
 public class ExploringThreadProblemsWithSynchronization {
 
     public static void etpExecute() throws InterruptedException {
@@ -56,6 +63,9 @@ public class ExploringThreadProblemsWithSynchronization {
         }
     }
 
+    /*
+    * (locking does not apply to none shared objects)
+    * */
     /*
     * We add the synchronized specifier to the method names
     * which contain CRITICAL SECTIONS
