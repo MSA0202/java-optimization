@@ -17,7 +17,21 @@ public class Section6Exec {
         System.out.println("End Exploring Thread Solutions with locks");
 
         System.out.println("Start Exploring Thread Solutions with locks");
-        MetricsExample.metricsExecute();
+        //MetricsExample.metricsExecute();
         System.out.println("End Exploring Thread Solutions with locks");
+
+        /*
+        * Will have loads of data races
+        * */
+        System.out.println("Start Data Race Example");
+        //DataRaceExample.dataRaceExampleExecute();
+        System.out.println("End Data Race Example");
+
+        /*
+        * Will be fine - no data race
+        * */
+        System.out.println("Start Data Race Fix Example");
+        //DataRaceExample.dataRaceExampleFixExecute();
+        System.out.println("End Data Race Fix Example");
     }
 }
